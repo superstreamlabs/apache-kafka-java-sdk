@@ -791,15 +791,6 @@ public class Superstream {
                     break;
 
                 case "CompressionUpdate":
-                    // if defined as false in env vars - override the value from superstream
-                    String compressionEnabledString = envVars.get(SUPERSTREAM_COMPRESSION_ENABLED_ENV_VAR);
-                    if (compressionEnabledString != null) {
-                        Boolean compressionEnabled = Boolean.parseBoolean(compressionEnabledString);
-                        if (!compressionEnabled) {
-                            this.compressionEnabled = false;
-                            break;
-                        }
-                    }
                     Boolean enableCompression = (Boolean) payload.get("enable_compression");
                     if (enableCompression) {
                         this.compressionTurnedOffBySuperstream = false;
@@ -957,10 +948,6 @@ public class Superstream {
                 tags = "";
             }
             boolean compressionEnabled = false;
-            String compressionEnabledString = envVars.get(SUPERSTREAM_COMPRESSION_ENABLED_ENV_VAR);
-            if (compressionEnabledString != null) {
-                compressionEnabled = Boolean.parseBoolean(compressionEnabledString);
-            }
             checkStdoutEnvVar();
             Superstream superstreamConnection = new Superstream(token, superstreamHost, learningFactor, configs,
                     reductionEnabled, type, tags, compressionEnabled);
