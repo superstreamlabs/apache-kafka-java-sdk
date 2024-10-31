@@ -84,6 +84,12 @@ public class Superstream {
     private static final PrintStream originalErr = System.err;
     private SuperstreamConfigParser configParser = null;
 
+    static {
+        if (Boolean.parseBoolean(System.getenv(SUPERSTREAM_DEBUG_ENV_VAR_ENV_VAR))) {
+            System.out.println("Superstream library has been loaded.");
+        }
+    }
+
     public Superstream(String token, String host, Integer learningFactor, Map<String, Object> configs,
                        Boolean enableReduction, String type, String tags, Boolean enableCompression) {
         this.learningFactor = learningFactor;
@@ -791,15 +797,6 @@ public class Superstream {
                     break;
 
                 case "CompressionUpdate":
-                    // if defined as false in env vars - override the value from superstream
-                    String compressionEnabledString = envVars.get(SUPERSTREAM_COMPRESSION_ENABLED_ENV_VAR);
-                    if (compressionEnabledString != null) {
-                        Boolean compressionEnabled = Boolean.parseBoolean(compressionEnabledString);
-                        if (!compressionEnabled) {
-                            this.compressionEnabled = false;
-                            break;
-                        }
-                    }
                     Boolean enableCompression = (Boolean) payload.get("enable_compression");
                     if (enableCompression) {
                         this.compressionTurnedOffBySuperstream = false;
@@ -957,10 +954,6 @@ public class Superstream {
                 tags = "";
             }
             boolean compressionEnabled = false;
-            String compressionEnabledString = envVars.get(SUPERSTREAM_COMPRESSION_ENABLED_ENV_VAR);
-            if (compressionEnabledString != null) {
-                compressionEnabled = Boolean.parseBoolean(compressionEnabledString);
-            }
             checkStdoutEnvVar();
             Superstream superstreamConnection = new Superstream(token, superstreamHost, learningFactor, configs,
                     reductionEnabled, type, tags, compressionEnabled);

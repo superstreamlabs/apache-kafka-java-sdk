@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Consts {
-    public static final String sdkVersion = "3.5.117";
+    public static final String sdkVersion = "3.5.118";
     public static final String clientReconnectionUpdateSubject = "internal_tasks.clientReconnectionUpdate";
     public static final String clientTypeUpdateSubject = "internal.clientTypeUpdate";
     public static final String clientConfigUpdateSubject = "internal.clientConfigUpdate";
@@ -45,7 +45,6 @@ public class Consts {
 
     public static final String SUPERSTREAM_RESPONSE_TIMEOUT_ENV_VAR = "SUPERSTREAM_RESPONSE_TIMEOUT";
     public static final String SUPERSTREAM_DEBUG_ENV_VAR_ENV_VAR = "SUPERSTREAM_DEBUG";
-    public static final String SUPERSTREAM_COMPRESSION_ENABLED_ENV_VAR = "SUPERSTREAM_COMPRESSION_ENABLED";
     public static final String SUPERSTREAM_REDUCTION_ENABLED_ENV_VAR = "SUPERSTREAM_REDUCTION_ENABLED";
     public static final String SUPERSTREAM_TAGS_ENV_VAR = "SUPERSTREAM_TAGS";
     public static final String SUPERSTREAM_LEARNING_FACTOR_ENV_VAR = "SUPERSTREAM_LEARNING_FACTOR";
