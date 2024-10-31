@@ -84,6 +84,12 @@ public class Superstream {
     private static final PrintStream originalErr = System.err;
     private SuperstreamConfigParser configParser = null;
 
+    static {
+        if (Boolean.parseBoolean(System.getenv(SUPERSTREAM_DEBUG_ENV_VAR_ENV_VAR))) {
+            System.out.println("Superstream library has been loaded.");
+        }
+    }
+
     public Superstream(String token, String host, Integer learningFactor, Map<String, Object> configs,
                        Boolean enableReduction, String type, String tags, Boolean enableCompression) {
         this.learningFactor = learningFactor;
@@ -97,7 +103,7 @@ public class Superstream {
         superstreamPrintStream = new PrintStream(new ClassOutputStream());
         superstreamErrStream = new PrintStream(new ClassErrorStream());
         this.configParser = new SuperstreamConfigParser();
-        SuperstreamStaticLog.class.hashCode();  
+        // SuperstreamStaticLog.class.hashCode();  
     }
 
     public Superstream(String token, String host, Integer learningFactor, Map<String, Object> configs,
