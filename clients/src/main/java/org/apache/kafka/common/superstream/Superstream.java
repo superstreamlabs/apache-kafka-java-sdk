@@ -97,6 +97,7 @@ public class Superstream {
         superstreamPrintStream = new PrintStream(new ClassOutputStream());
         superstreamErrStream = new PrintStream(new ClassErrorStream());
         this.configParser = new SuperstreamConfigParser();
+        SuperstreamStaticLog.class.hashCode();  
     }
 
     public Superstream(String token, String host, Integer learningFactor, Map<String, Object> configs,
