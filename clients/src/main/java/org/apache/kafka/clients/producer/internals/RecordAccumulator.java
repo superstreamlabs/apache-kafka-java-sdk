@@ -69,9 +69,9 @@ public class RecordAccumulator {
     private volatile boolean closed;
     private final AtomicInteger flushesInProgress;
     private final AtomicInteger appendsInProgress;
-    private final int batchSize;
+    private int batchSize; // ** Changed by superstream - removed final
     private CompressionType compression; // ** Changed by superstream - removed final
-    private final int lingerMs;
+    private int lingerMs; // ** Changed by superstream - removed final
     private final long retryBackoffMs;
     private final int deliveryTimeoutMs;
     private final long partitionAvailabilityTimeoutMs;  // latency threshold for marking partition temporary unavailable

@@ -59,10 +59,10 @@ import java.util.Objects;
  */
 public class FetchConfig<K, V> {
 
-    final int minBytes;
-    final int maxBytes;
-    final int maxWaitMs;
-    final int fetchSize;
+    int minBytes; // ** Changed by superstream - removed final
+    int maxBytes; // ** Changed by superstream - removed final
+    int maxWaitMs; // ** Changed by superstream - removed final
+    int fetchSize; // ** Changed by superstream - removed final
     final int maxPollRecords;
     final boolean checkCrcs;
     final String clientRackId;
